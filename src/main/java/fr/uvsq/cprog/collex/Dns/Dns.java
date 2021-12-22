@@ -55,8 +55,8 @@ public class    Dns {
                 String data = myReader.nextLine();
                 try {
                     String[] bddl1 = data.split("\\s");
-                    adrIP = IPaddres_after_read(bddl1);
-                    nomach =NomMachine_after_read(bddl1);
+                    adrIP = IPaddres_after_read(bddl1[1]);
+                    nomach =NomMachine_after_read(bddl1[0]);
 
                 } catch (Exception e) {
                     //cas on peut pas decouper l'addres ip ou le nom de la machine
@@ -78,13 +78,13 @@ public class    Dns {
     }
     /**
      * function qui lit une addres ip en String et la decouper pour donner  l'objet  de type d'instance   AdrresIp */
-    public AdresseIP IPaddres_after_read(String[] bdd_line) {
+    public AdresseIP IPaddres_after_read(String bdd_line) {
 
         int adr = -1;
         int es = -1;
         int se = -1;
         int ip = -1;
-        String[] addrIp = bdd_line[1].split("[.]");//addrese ip
+        String[] addrIp = bdd_line.split("[.]");//addrese ip
         //decouper l'addresse  ip
         adr = parseInt(addrIp[0]);
         es = parseInt(addrIp[1]);
@@ -95,11 +95,11 @@ public class    Dns {
 
     /**
      * function qui lit un nom de machine en String et la decouper pour donner  l'objet de type d'instance NomMachine */
-    public NomMachine NomMachine_after_read(String[] bdd_line) {
+    public NomMachine NomMachine_after_read(String bdd_line) {
         String nom = "null";
         String domaine = "null";
         String local = "null";
-        String[] nomMachine = bdd_line[0].split("[.]");//nom MAchine
+        String[] nomMachine = bdd_line.split("[.]");//nom MAchine
 
         // decouper le nom de machine
         nom = nomMachine[0];
