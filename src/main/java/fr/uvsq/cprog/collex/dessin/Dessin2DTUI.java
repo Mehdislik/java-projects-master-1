@@ -15,14 +15,14 @@ public class Dessin2DTUI {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Les commandes sont les suivantes : laisser un vide pares la commande");
-        System.out.println("\t - Creer <typeForme>  ");
+        System.out.println("Les commandes sont les suivantes : laisser un vide apres la commande");
+        System.out.println("\t - Creer <vide> <typeForme>  ");
         System.out.println("\t - Supprimer ");
-        System.out.println("\t - Déplacer ");
+        System.out.println("\t - Deplacer ");
         System.out.println("\t - Afficher ");
         System.out.println("\n");
         System.out.println("\t type formes sont :(Triangle ,Rectangle ,Cercle)");
-        System.out.println("\t - Taper NO pour les options par défaut");
+
 
         System.out.println("Saisie de la commande : ");
 
@@ -67,12 +67,12 @@ public class Dessin2DTUI {
             System.out.println("Commande incorrecte.\n");
 
             System.out.println("Les commandes sont les suivantes : ");
-            System.out.println("\t - Creer <Forme> ");
+            System.out.println("\t - Creer <vide> <typeForme>  ");
             System.out.println("\t - Supprimer ");
             System.out.println("\t - Deplacer ");
             System.out.println("\t - Afficher ");
             System.out.println("\n");
-            System.out.println("\t - Taper NO pour les options par défaut");
+
 
             throw new InputMismatchException();
         }
