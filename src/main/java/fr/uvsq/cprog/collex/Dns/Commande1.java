@@ -7,7 +7,7 @@ import java.util.*;
  * classe implemante l'interface Commande
  * cette classe vas excuter les commande saisie par les utlisateures
  */
-    public class Commande1 {
+    public class Commande1 implements  Commande {
         private String cmd;
         private String arg;
 
