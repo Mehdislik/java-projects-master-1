@@ -47,7 +47,15 @@ public class ReqApp {
             }
             System.out.println("\n");
 
-           
+            System.out.println("liste de emplye inferieur a 30 ans :");// liste de employe inferieur a 30 ans
+            List<Employe> requeteB= employes
+                    .stream()
+                    .filter(employe -> employe.getAge() < 30)
+                    .collect(Collectors.toList());
+            for (Employe e: requeteB) {
+                System.out.println(e.toString());
+            }
+            System.out.println();
         }
     }
 
