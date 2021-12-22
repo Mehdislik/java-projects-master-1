@@ -1,26 +1,27 @@
 package fr.uvsq.cprog.collex.Dns;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Scanner;
 
-public class Main
+public class DnsApp
 {
-    public static void main( String[] args )
-    {
-        AdresseIP a = new AdresseIP(192,168,0,1);
-        NomMachine n = new NomMachine("machine2","domaine1","local2");
-        Dns dns = new Dns();
-         DnsItem itm =dns.getItem(a);//recuper le nom de machine
-         DnsItem itm2 =dns.getItem(n);// recuper l'addres ip
-         System.out.println(itm.toString());
-         System.out.println(itm2.toString());
-         ArrayList<String> de= dns.getItems("domaine1",'m');
-        System.out.println(de.toString());
-        ArrayList<String> dez= dns.getItems("domaine3",'m');
-        System.out.println(dez.toString());
-        ArrayList<String> ds= dns.getItems("domaine1",'a');
-        System.out.println(ds.toString());
+    private DnsTUI ui ;
 
-        System.out.println( "Hello World!" );
+    public DnsApp(){
+        this.ui = new DnsTUI();
     }
 
+    public void run() throws  IOException {
+
+        Scanner scanner = new Scanner(System.in);
+        String commande = null;
+
+        if (scanner.hasNextLine()) {
+            commande = scanner.nextLine();
+            this.ui.nextCommand(commande);
+        }
+
+
+}
+    
 }
