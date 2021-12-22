@@ -1,0 +1,6 @@
+machine.domaine.local 192.168.0.1
+machine1.domaine1.local1 192.168.0.2
+machine2.domaine1.local2 192.168.0.3
+machine5.domaine5.local5 192.168.0.6
+machine4.domaine3.local4 192.168.0.5
+machine3.domaine3.local3 192.168.0.4
