@@ -105,6 +105,31 @@ public class ReqApp {
                 System.out.println(femme);
             }
             System.out.println();
+            System.out.println("la moyenne des salaires par sexe :");//la moyenne des salaires par sexe
+            double requeteG = employes
+                    .stream()
+                    .filter(employe -> employe.getSexe() == Employe.sexeEMP.Homme)
+                    .mapToInt(employe -> employe.getSalaire().intValue())
+                    .average()
+                    .getAsDouble();
+
+            System.out.println("moyenne du salaire des hommes: " + format.format(requeteG));
+            double requeteGF = employes
+                    .stream()
+                    .filter(employe -> employe.getSexe() == Employe.sexeEMP.Femme)
+                    .mapToInt(employe -> employe.getSalaire().intValue())
+                    .average()
+                    .getAsDouble();
+
+            System.out.println("moyenne du salaire des femmes: " + format.format(requeteGF) + "\n");
+
+
+
+            System.out.println("le nom et la date d’embauche par services:");//le nom et la date d’embauche par services
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            employes.stream()
+                    .sorted(Comparator.comparing(Employe::getServiceRattachement))
+                    .forEach(employe -> System.out.println(employe.getServiceRattachement()+"  "+employe.getNom() + " " + employe.getDateEmbauche().format(formatter)));
 
 
 
