@@ -88,6 +88,28 @@ public class ReqApp {
             System.out.println(format.format(requeteE) + "\n");
             System.out.println("");
 
+            System.out.println("les employés regroupés selon leur sexe :");//les employés regroupés selon leur sexe
+            List<Employe> requeteF = employes
+                    .stream()
+                    .filter(employe -> employe.getSexe() == Employe.sexeEMP.Homme)
+                    .collect(Collectors.toList());
+            List<Employe> requeteFF = employes
+                    .stream()
+                    .filter(employe -> employe.getSexe() == Employe.sexeEMP.Femme)
+                    .collect(Collectors.toList());
+            for (Employe homme : requeteF) {
+                System.out.println(homme);
+            }
+            System.out.println();
+            for (Employe femme : requeteFF) {
+                System.out.println(femme);
+            }
+            System.out.println();
+
+
+
+
+
         }
 
 
