@@ -1,5 +1,11 @@
 = Exercices
 
+* Nom:Debbah 
+* prenom :Mehdi sofiane 
+* Master 1 IRS 
+* numero etudiant :22106782
+
+
 [IMPORTANT]
 ====
 Dans ces exercices, vous respecterez les contraintes suivantes:
