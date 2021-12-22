@@ -50,27 +50,27 @@ public class Dessin2D {
     }
 
     public void creer_Triangle() {
-        System.out.println("enttre les coordonne du premier coin de votre re:");
+        System.out.println("entrez les coordonne du premier coin de votre triangle:");
         Point a = new Point();
-        System.out.println("Please type the coordinates of the second corner of your triangle:");
+        System.out.println("entrez les coordonne du deuxieme  coin de votre triangle:");
         Point b = new Point();
-        System.out.println("Please type the coordinates of the third corner of your triangle:");
+        System.out.println("entrez les coordonne du troiseme coin de votre triangle:");
         Point c = new Point();
         this.Draw.add( new Triangle(a, b, c));
         System.out.println("Triangle creer avec succee");
     }
 
     public void creer_Circle() {
-        System.out.println("Please type the coordinates of the center of your circle:");
+        System.out.println("entrez les coordonne du centre de votre cercle:");
         Point center = new Point();
-        System.out.print("Please type the radius of your circle:\n\t>> ");
+        System.out.print("entre le rayon de votre cercle :\n\t>> ");
         Scanner userInput = new Scanner(System.in);
         double radius;
         try {
             radius = userInput.nextDouble();
         }
         catch(InputMismatchException e) {
-            System.out.println("Error: user input is of incorrect type");
+            System.out.println("Erreur : entre incorrect");
             radius = 5;
         }
         this.Draw.add(new Circle(center, radius));
@@ -85,7 +85,7 @@ public class Dessin2D {
             int i=0;
             System.out.format("il ya  %d figures dessine\n", Draw.size());
             for(Forme elem : Draw) {
-                System.out.println("fome n:"+i);
+                System.out.println("fome n°: "+i);
                 elem.afficher();
                 System.out.println("\n**********");
                 i++;
@@ -121,7 +121,7 @@ public class Dessin2D {
             dx = userInput.nextDouble();
 
             userInput = null;
-            System.out.print("entrez combien dplacer la forme sur l'axe Y\n\t>> ");
+            System.out.print("entrez combien deplacer la forme sur l'axe Y\n\t>> ");
             userInput = new Scanner(System.in);
             dy = userInput.nextDouble();
 
