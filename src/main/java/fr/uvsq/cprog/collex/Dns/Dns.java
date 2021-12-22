@@ -8,26 +8,29 @@ import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
-/** classe DNS qui charge la base de donne
- * et fait des requete dns dans la base de donne 
+/**
+ * @author :debbah Mehdi sofiane
+ * classe qui represente le serveur DNs
+ *
+ *
  */
 public class    Dns {
 
-    private HashMap<AdresseIP, NomMachine> Ip_Ver_Machine;
-    private HashMap<NomMachine, AdresseIP> Machine_Ver_Ip;
+    //jai creer deux hashmap pour avoir une recherche plus rapide en O(1) avec la methode contain()
+    //parceque on recherche avec une clé qui est l'addres ip ou la clée nomMachine
+    private final HashMap<AdresseIP, NomMachine> Ip_Ver_Machine;
+    private final HashMap<NomMachine, AdresseIP> Machine_Ver_Ip;
 
 
-    //constructeur qui charger la bdd
+    /**
+     * constructeur qui charger la bdd et intilalise les hashmap
+     */
     public Dns() {
-        //jai creer deux hashmap pour avoir une recherche plus rapide en O(1) avec la methode contain()
-        //parceque on recherche avec une clé qui est l'addrs ip
-        // et aussi la clée nomMachine
+
         Ip_Ver_Machine = new HashMap<AdresseIP, NomMachine>();
         Machine_Ver_Ip = new HashMap<NomMachine, AdresseIP>();
         AdresseIP adrIP= null;
         NomMachine nomach = null;
-
-
         String bddpath = "";// chemin de la base de donne
 
         //  charger le fichier de proprieté
@@ -42,6 +45,7 @@ public class    Dns {
         } catch (IOException e) {
             System.out.println("fichier de proprité introuvable ");
         }
+
         try {
             File myObj = new File(bddpath);
             Scanner myReader = new Scanner(myObj);
@@ -58,11 +62,10 @@ public class    Dns {
                     //cas on peut pas decouper l'addres ip ou le nom de la machine
                     System.out.println("erreur l'entree Dns n'est pas dans le format correct");
                 }
-                // ajout de chaque ligne de notre Dns dans des hashmap
-                Ip_Ver_Machine.put(adrIP, nomach);
-                Machine_Ver_Ip.put(nomach, adrIP);
 
-
+            // ajout de chaque ligne de notre Dns dans des hashmap
+            Ip_Ver_Machine.put(adrIP, nomach);
+            Machine_Ver_Ip.put(nomach, adrIP);
             }
             //fermer le fichier
             myReader.close();
@@ -104,6 +107,57 @@ public class    Dns {
         local = nomMachine[2];
         return new NomMachine(nom, domaine, local);
 
+    }
+
+     /** fonction qui retourne un DnsItem apartir d'une address ip */
+    public DnsItem getItem(AdresseIP adr) {
+        DnsItem dn1;
+        NomMachine nm;
+
+        if (Ip_Ver_Machine.containsKey(adr)) {
+            nm = Ip_Ver_Machine.get(adr);
+            dn1 = new DnsItem(nm, adr);
+
+        } else {
+            dn1 = new DnsItem(null, null);
+            throw new IllegalArgumentException("addres ip qui  n'existe pas dans la base de donne ou elle est dans un format incorrect ");
+        }
+        return dn1;
+
+    }
+
+    /** fonction qui retourne un DnsItem apartir d'un nom de machine */
+    public DnsItem getItem(NomMachine nomach) {
+        DnsItem dn1;
+        AdresseIP adrip;
+
+        if (Machine_Ver_Ip.containsKey(nomach)) {
+            adrip = Machine_Ver_Ip.get(nomach);
+            dn1 = new DnsItem(nomach, adrip);
+        } else {
+            dn1 = new DnsItem(null, null);
+            throw new IllegalArgumentException("nomMachine  qui  n'existe pas dans la base de donne ou elle est dans un format incorrect ");
+        }
+        return dn1;
+
+    }
+    /** fonction qui retourner une liste de machine qui sont dans le meme domaine */
+    public ArrayList<String> getItems(String domain, char arg) {
+        ArrayList<String> meme_domaine = new ArrayList<String>();
+
+        for (Map.Entry<NomMachine, AdresseIP>  element : this.Machine_Ver_Ip.entrySet()) {
+            String domaine = element.getKey().getDomaine();
+            if (domaine.equals(domain)) {
+                if (arg == 'm') {//nom machine
+                    meme_domaine.add(element.getKey().toString());
+                }
+                if (arg == 'a') {// adres ip
+                    meme_domaine.add(element.getValue().toString());
+                }
+            }
+        }
+        Collections.sort(meme_domaine);//trie par addres ip ou nommachine
+        return meme_domaine;
     }
 
 
