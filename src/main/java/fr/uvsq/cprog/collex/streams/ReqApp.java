@@ -68,8 +68,25 @@ public class ReqApp {
             }
             System.out.println("*** requete termine ********");
             System.out.println();
+            System.out.println("le nom et le salaire trié par salaire décroissant :");//le nom et le salaire trié par salaire décroissant
+            List<String> requeteD = employes
+                    .stream()
+                    .sorted(Comparator.comparing(Employe::getSalaire).reversed())
+                    .map(employe -> employe.getNom() + " " + employe.getSalaire())
+                    .collect(Collectors.toList());
+            System.out.println(requeteD );
+            System.out.println("** requete temrine  ********\n ");
 
 
+            System.out.println("la moyenne des salaires :");//la moyenne des salaires
+            double requeteE = employes
+                    .stream()
+                    .mapToInt(employe -> employe.getSalaire().intValue())
+                    .average()
+                    .getAsDouble();
+            DecimalFormat format = new DecimalFormat("#.###");
+            System.out.println(format.format(requeteE) + "\n");
+            System.out.println("");
 
         }
 
