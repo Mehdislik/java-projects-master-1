@@ -56,7 +56,24 @@ public class ReqApp {
                 System.out.println(e.toString());
             }
             System.out.println();
+
+            System.out.println("le nom des employe homme :");// le nom des employe homme
+            List<String> requeteC = employes
+                    .stream()
+                    .filter(employe -> employe.getSexe() == Employe.sexeEMP.Homme)
+                    .map(Employe::getNom)
+                    .collect(Collectors.toList());
+            for (String e : requeteC) {
+                System.out.println(e);
+            }
+            System.out.println("*** requete termine ********");
+            System.out.println();
+
+
+
         }
+
+
     }
 
 
