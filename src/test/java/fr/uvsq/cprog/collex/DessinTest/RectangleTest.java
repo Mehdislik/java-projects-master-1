@@ -40,5 +40,23 @@ public class RectangleTest {
     }
 
 
+    @Test
+    public void test_perimetre (){
+        Point b_g = new Point(3,5) ;
+        Point  h_d = new Point(1, 1);
+        Rectangle r = new Rectangle(b_g,h_d,2,3);
+        assertEquals(10,r.Perimeter(),0);
+
+    }
+    @Test
+    public void test_aire (){
+        Point b_g = new Point(3,5) ;
+        Point  h_d = new Point(1, 1);
+        Rectangle r = new Rectangle(b_g,h_d,2,3);
+        assertEquals(6,r.Aire(),0);
+
+    }
+
+
 
 }
