@@ -29,18 +29,26 @@ public class CercleTest {
     }
 
     @Test
-    public  void test_permetre(){
-
-
+    public  void test_perimetre(){
+        Point p1 = new Point(6,4);
+        Circle c = new Circle(p1,7);
+        double permetre = Math.PI * 2*7;
+        assertEquals(permetre,c.Perimeter(),0);
     }
 
     @Test
     public void test_Aire(){
-
+        Point p1 = new Point(6,4);
+        Circle c = new Circle(p1,7);
+        double aire =  Math.PI * Math.pow(7,2);
+        assertEquals(aire,c.Aire(),0);
     }
 
     @Test
     public void test_diametre(){
+        Point p1 = new Point(6,4);
+        Circle c = new Circle(p1,3);
+       assertEquals(6, c.Diametere(),0);
 
     }
 }
