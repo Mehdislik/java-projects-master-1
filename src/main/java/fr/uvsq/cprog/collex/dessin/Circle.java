@@ -40,5 +40,21 @@ package fr.uvsq.cprog.collex.dessin;
             System.out.format("Perimetere = %.2f cm\n", Perimeter());
             System.out.format("Aire = %.2f cm²\n", Aire());
         }
+
+    public Point getCenter() {
+        return center;
     }
+
+    public void setCenter(Point center) {
+        this.center = center;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+}
 
