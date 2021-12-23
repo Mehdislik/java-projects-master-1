@@ -19,15 +19,15 @@ public class Triangle extends Forme {
     }
 
     // les methodes
-    public double coteA() {
+    public double coteA() {//longeur cote A
         return Math.sqrt(Math.pow(this.b.getX() - this.c.getX(), 2) + Math.pow(this.b.getY() - this.c.getY(), 2));
     }
 
-    public double coteB() {
+    public double coteB() {//longeur cote B
         return  Math.sqrt(Math.pow(this.a.getX() - this.c.getX(), 2) + Math.pow(this.a.getY() - this.c.getY(), 2));
     }
 
-    public double coteC() {
+    public double coteC() {// longeur cote c
         return Math.sqrt(Math.pow(this.a.getX() - this.b.getX(), 2) + Math.pow(this.a.getY() - this.b.getY(), 2));
     }
 
@@ -53,5 +53,29 @@ public class Triangle extends Forme {
         System.out.format("le Point c  (%.2f, %.2f)\n", this.c.getX(), this.c.getY());
         System.out.format("Perimeter = %.2f cm\n", Perimeter());
         System.out.format("Aire = %.2f cm²\n", Aire());
+    }
+
+    public Point getA() {
+        return a;
+    }
+
+    public void setA(Point a) {
+        this.a = a;
+    }
+
+    public Point getB() {
+        return b;
+    }
+
+    public void setB(Point b) {
+        this.b = b;
+    }
+
+    public Point getC() {
+        return c;
+    }
+
+    public void setC(Point c) {
+        this.c = c;
     }
 }
