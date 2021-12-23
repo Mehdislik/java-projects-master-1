@@ -7,7 +7,8 @@ package fr.uvsq.cprog.collex.dessin;
  *
  * un rectangle **/
     public class Rectangle extends Forme {
-        // Attributes
+
+    // Attributes
         private Point Bas_gauche;
         private Point haut_droite;
         private double  length;
@@ -43,5 +44,38 @@ package fr.uvsq.cprog.collex.dessin;
             System.out.format("l'aire = %.2f cm²\n", Aire());
             System.out.format("sa longeur = %.2f et largeur = %.2f\n", this.length,this.width);
         }
+
+    public Point getHaut_droite() {
+        return haut_droite;
     }
+
+    public void setHaut_droite(Point haut_droite) {
+        this.haut_droite = haut_droite;
+    }
+
+    public Point getBas_gauche() {
+        return Bas_gauche;
+    }
+
+    public void setBas_gauche(Point bas_gauche) {
+        Bas_gauche = bas_gauche;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+}
 
