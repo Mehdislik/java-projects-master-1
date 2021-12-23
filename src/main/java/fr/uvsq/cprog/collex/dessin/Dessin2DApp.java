@@ -7,8 +7,8 @@ public class Dessin2DApp {
 
             Dessin2DTUI Dessin2DTUI = new Dessin2DTUI();
             while (true){
-            ExAction Action = Dessin2DTUI.Input();
-            Action.execute();}
+                ExAction Action = Dessin2DTUI.Input();
+                Action.execute();}
         }
     }
 

@@ -1,12 +1,14 @@
 package fr.uvsq.cprog.collex.dessin;
 
 
+import java.io.Serializable;
+
 /**
  * @author : debbah Mehdi Sofiane
  *  classe represetant
  *
  * un rectangle **/
-    public class Rectangle extends Forme {
+    public class Rectangle extends Forme implements Serializable {
 
     // Attributes
         private Point Bas_gauche;
@@ -77,5 +79,14 @@ package fr.uvsq.cprog.collex.dessin;
         this.width = width;
     }
 
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "Bas_gauche=" + Bas_gauche +
+                ", haut_droite=" + haut_droite +
+                ", length=" + length +
+                ", width=" + width +
+                '}';
+    }
 }
 

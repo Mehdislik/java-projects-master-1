@@ -1,10 +1,13 @@
 package fr.uvsq.cprog.collex.dessin;
 
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
+import  java.io.FileInputStream;
+import java.io.ObjectInputStream;
 /**
  * @author :debbah mehdi Sofiane
  * classe contenat les opertaion
@@ -13,7 +16,7 @@ import java.util.Scanner;
 public class Dessin2D {
 
     // liste des forme s
-    private List<Forme> Draw= new ArrayList<>();
+    private List<Forme> Draw= new ArrayList<Forme>();
 
     public Dessin2D() {
     }
@@ -105,14 +108,15 @@ public class Dessin2D {
             int numforme; // le numero de la forme a deplacer
 
             do {
-                System.out.print("donner le numero de la  formes a deplacer ? Tapper '-1'si vous voulez deplacer aucune\n\t>> Figure n°");
+                System.out.print("donner le numero de la  formes a deplacer ? Tapper '-1'si vous voulez deplacer aucune " +
+                        "autre  forme \n\t>> Figure n°");
                 Scanner userInput = new Scanner(System.in);
                 numforme = userInput.nextInt();
                 if (numforme != -1) {
                     forme_Adeplacer.add(numforme);
                 }
             }
-            while (numforme != 0);
+            while (numforme != -1);
 
             // deplacer la figure nO n
             double dx, dy;
@@ -130,7 +134,7 @@ public class Dessin2D {
                 numforme = forme_Adeplacer.get(i) ;
                 if (numforme <= Draw.size()) {
                     Draw.get(numforme).deplacer(dx, dy);
-                    System.out.println("la forme a etait depalcer!");
+                    System.out.println("la fome N° "+numforme+"  a etait depalcer!");
                 }
                 else {
                     System.out.println("Erreur :  L'entree est plus grande que le nombre de formes ");
@@ -157,7 +161,7 @@ public class Dessin2D {
                 int numforme;
 
                 do {
-                    System.out.print("donner le numero de la formes a supprimer ? Tapper '-1'si vous voulez suprrimer aucune autre \n\t>> Figure n°");
+                    System.out.print("donner le numero de la formes a supprimer ? Tapper '-1'si vous voulez  aucune autre former a supprimer \n\t>> Figure n°");
                     Scanner userInput2 = new Scanner(System.in);
                     numforme = userInput2.nextInt();
                     if (numforme != -1) {
@@ -172,7 +176,7 @@ public class Dessin2D {
                     numforme = forme_Asupprimer.get(i) ;
                     if (numforme <= Draw.size()) {
                         Draw.remove(numforme);
-                        System.out.println("la forme a etait supprimer!");
+                        System.out.println("la forme  N° "+numforme+"  a etait supprimer!");
                     }
                     else {
                         System.out.println("Erreur :  L'entree est plus grande que le nombre de formes ");
@@ -185,6 +189,51 @@ public class Dessin2D {
             System.out.println("il ya a pas de forme a supprimer!");
         }
     }
+
+
+    public void sauvgarderFormes (){
+        List<Forme> obj;
+        obj = new ArrayList<Forme>();
+        obj= Draw;
+        // Let's serialize an Object
+
+            try {
+                FileOutputStream fileOut = new FileOutputStream("Formes.txt");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                out.writeObject(obj.toString());
+                out.close();
+                fileOut.close();
+                System.out.println("\nSauvgarde faite.. voir le fichier Formes.txt..\n");
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+    }
+
+    public void ChargerFormes(){
+        try {
+            FileInputStream fileIn = new FileInputStream("Formes.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            System.out.println("chargement des formes  : \n" + in.readObject().toString());
+            in.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+    } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
     public List<Forme> getDraw() {

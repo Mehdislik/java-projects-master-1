@@ -1,7 +1,9 @@
 package fr.uvsq.cprog.collex.dessin;
 
 
-public abstract class Forme {
+import java.io.Serializable;
+
+public abstract class Forme implements Serializable {
 
     public abstract void deplacer(double dx, double dy);
     public abstract void afficher();

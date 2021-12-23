@@ -1,11 +1,13 @@
 package fr.uvsq.cprog.collex.dessin;
 
+import java.io.Serializable;
+
 /**
  * @author : debbah Mehdi Sofiane
  *  classe represetant un triangle
  *
  **/
-public class Triangle extends Forme {
+public class Triangle extends Forme implements Serializable {
     // variables
     private Point a;
     private Point b;
@@ -77,5 +79,14 @@ public class Triangle extends Forme {
 
     public void setC(Point c) {
         this.c = c;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
     }
 }

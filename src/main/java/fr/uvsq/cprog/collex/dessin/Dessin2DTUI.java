@@ -20,6 +20,8 @@ public class Dessin2DTUI {
         System.out.println("\t - Supprimer  ");
         System.out.println("\t - Deplacer  ");
         System.out.println("\t - Afficher  ");
+        System.out.println("\t - Sauvgarder ");
+        System.out.println("\t - Charger ");
         System.out.println("\t - Q  (pour quittez) ");
         System.out.println("\n");
         System.out.println("\t  veuillez laisser un vide apres chaque  commande !");
@@ -32,7 +34,7 @@ public class Dessin2DTUI {
         String form;
 
         if(li.contains("Creer")) { //creation d'un forme
-            String[] arg = li.split( " ", 2);
+            String[] arg = li.split( " ", 3);
             form = arg[1];//type de forme :circle , traiagle
 
 
@@ -71,6 +73,18 @@ public class Dessin2DTUI {
             cmd.setForm("form");
             return cmd ;
         }
+        else if(li.contains("Sauvgarder"))//savgareder la liste des formes
+        {   String[] arg = li.split( " ", 2);
+            cmd.setAction ("Sauvgarder");
+            cmd.setForm("form");
+            return cmd;
+        }
+        else if(li.contains("Charger"))//charger  la liste des formes
+        {   String[] arg = li.split( " ", 2);
+            cmd.setAction ("Charger");
+            cmd.setForm("form");
+            return cmd;
+        }
         else {
             System.out.println("Commande incorrecte.\n");
 
@@ -79,9 +93,11 @@ public class Dessin2DTUI {
             System.out.println("\t - Supprimer  ");
             System.out.println("\t - Deplacer  ");
             System.out.println("\t - Afficher  ");
+            System.out.println("\t - Sauvgarder ");
+            System.out.println("\t - Charger ");
             System.out.println("\t - Q  (pour quittez) ");
             System.out.println("\n");
-            System.out.println("\t  veuillez laisser un vide apres chaque  commande");
+            System.out.println("-veuillez laisser un vide apres chaque  commande");
 
             throw new InputMismatchException();
         }

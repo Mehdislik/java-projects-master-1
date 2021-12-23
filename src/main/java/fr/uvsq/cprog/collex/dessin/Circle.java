@@ -1,10 +1,13 @@
 package fr.uvsq.cprog.collex.dessin;
+
+import java.io.Serializable;
+
 /**
  * @author : debbah Mehdi Sofiane
  *  classe represetant un circle
  *
  **/
-    public class Circle extends Forme {
+    public class Circle extends Forme  implements Serializable {
         // Attributes
         private Point center;
         private double radius;
@@ -44,6 +47,7 @@ package fr.uvsq.cprog.collex.dessin;
             System.out.format("Aire = %.2f cm²\n", Aire());
         }
 
+
     public Point getCenter() {
         return center;
     }
@@ -58,6 +62,14 @@ package fr.uvsq.cprog.collex.dessin;
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "center=" + center +
+                ", radius=" + radius +
+                '}';
     }
 }
 

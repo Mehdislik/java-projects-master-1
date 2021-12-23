@@ -1,5 +1,6 @@
 package fr.uvsq.cprog.collex.dessin;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * lass representant un point avec
  * les coordone x , y
  */
-public class Point{
+public class Point implements Serializable {
 
     private double x;
     private double y;
@@ -62,5 +63,13 @@ public class Point{
 
     public void afficher() {
         System.out.println("x = " + this.x + ", y = " + this.y);
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

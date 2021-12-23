@@ -67,9 +67,16 @@ public class ExAction implements Command{
             Draw.Afficher_forme();
 
         }
+        else if( this.Action.equals("Sauvgarder")){
+            Draw.sauvgarderFormes();
+        }
+        else if( this.Action.equals("Charger")){
+            Draw.ChargerFormes();
+        }
         else if (this.Action.equals("Q")){//quittez l'application
             System.exit(0);
         }
+
 }
 
 }
