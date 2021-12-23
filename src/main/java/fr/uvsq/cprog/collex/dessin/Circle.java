@@ -17,6 +17,7 @@ package fr.uvsq.cprog.collex.dessin;
 
         // Methods
         public double Diametere() {
+
             return this.radius * 2;
         }
 
@@ -26,10 +27,12 @@ package fr.uvsq.cprog.collex.dessin;
         }
 
         public double Aire() {
+
             return Math.PI * Math.pow(this.radius, 2);
         }
 
         public void deplacer(double dx, double dy) {
+
             this.center.deplacer(dx, dy);
         }
 

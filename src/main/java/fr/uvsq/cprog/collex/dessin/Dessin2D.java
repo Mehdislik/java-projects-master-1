@@ -11,8 +11,9 @@ import java.util.Scanner;
  * afficher ,deplacer  ,supprimer formes
  */
 public class Dessin2D {
+
     // liste des forme s
-    List<Forme> Draw= new ArrayList<>();
+    private List<Forme> Draw= new ArrayList<>();
 
     public Dessin2D() {
     }
@@ -42,7 +43,7 @@ public class Dessin2D {
         System.out.println("entree les coordonne du point de coin haut droit  de votre rectangle:");
         Point hautdroit = new Point();
         if (basgauche.getX() > hautdroit.getX() || basgauche.getY() > hautdroit.getY()) {
-            System.out.println("Erreur : coordonner impossible");
+            System.out.println("Erreur : coordonne impossible");
         }
         this.Draw.add(new Rectangle(basgauche , hautdroit,length,width));
         System.out.println("rectangle cree avec succee");
@@ -184,6 +185,16 @@ public class Dessin2D {
             System.out.println("il ya a pas de forme a supprimer!");
         }
     }
+
+
+    public List<Forme> getDraw() {
+        return Draw;
+    }
+
+    public void setDraw(List<Forme> draw) {
+        Draw = draw;
+    }
+
 }
 
 

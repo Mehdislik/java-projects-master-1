@@ -15,12 +15,14 @@ public class Dessin2DTUI {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Les commandes sont les suivantes : laisser un vide apres la commande");
+        System.out.println("Les commandes sont les suivantes : ");
         System.out.println("\t - Creer <vide> <typeForme>  ");
-        System.out.println("\t - Supprimer ");
-        System.out.println("\t - Deplacer ");
-        System.out.println("\t - Afficher ");
+        System.out.println("\t - Supprimer  ");
+        System.out.println("\t - Deplacer  ");
+        System.out.println("\t - Afficher  ");
+        System.out.println("\t - Q  (pour quittez) ");
         System.out.println("\n");
+        System.out.println("\t  veuillez laisser un vide apres chaque  commande !");
         System.out.println("\t type formes sont :(Triangle ,Rectangle ,Cercle)");
 
 
@@ -63,16 +65,23 @@ public class Dessin2DTUI {
             cmd.setForm("form");
             return cmd;
         }
+        else  if(li.contains("Q")){
+            String[] arg = li.split( " ", 2);
+            cmd.setAction ("Q");
+            cmd.setForm("form");
+            return cmd ;
+        }
         else {
             System.out.println("Commande incorrecte.\n");
 
             System.out.println("Les commandes sont les suivantes : ");
-            System.out.println("\t - Creer <vide> <typeForme>  ");
-            System.out.println("\t - Supprimer ");
-            System.out.println("\t - Deplacer ");
-            System.out.println("\t - Afficher ");
+            System.out.println("\t - Creer <vide>  <typeForme>  ");
+            System.out.println("\t - Supprimer  ");
+            System.out.println("\t - Deplacer  ");
+            System.out.println("\t - Afficher  ");
+            System.out.println("\t - Q  (pour quittez) ");
             System.out.println("\n");
-
+            System.out.println("\t  veuillez laisser un vide apres chaque  commande");
 
             throw new InputMismatchException();
         }

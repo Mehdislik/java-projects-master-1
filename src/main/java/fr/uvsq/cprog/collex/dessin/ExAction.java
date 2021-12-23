@@ -66,7 +66,10 @@ public class ExAction implements Command{
         else if (this.Action.equals("Afficher")){
             Draw.Afficher_forme();
 
-    }
+        }
+        else if (this.Action.equals("Q")){//quittez l'application
+            System.exit(0);
+        }
 }
 
 }
