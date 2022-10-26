@@ -1,14 +1,16 @@
 package fr.uvsq.cprog.collex.Dns;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-/**
- *  par  debbah Mehdi sofaine */
+
 
 import java.util.Objects;
 
-/** definition de la classe d'adresse ip avec 4 champs :
+/**
+ * definition de la classe d'adresse ip avec 4 champs :
  * adr.es.se.ip
+ * @author :debbah Mehdi sofiane
  */
 public class AdresseIP implements java.lang.Comparable<AdresseIP>  {
     private int adr;

@@ -20,9 +20,9 @@ public class PointTest {
     public void  test_deplacer (){
         Point p = new Point(2,10);
         p.deplacer(4,5);
-
         assertEquals(6,p.getX(),0);
         assertEquals(15,p.getY(),0);
     }
+
 
 }
