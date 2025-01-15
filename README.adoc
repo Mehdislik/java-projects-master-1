@@ -1,80 +1,148 @@
 
+# 📚 Java Projects - Master's Level
 
+Ce dépôt regroupe plusieurs projets Java réalisés dans le cadre d'un Master. Chaque projet met en pratique des concepts avancés de Java avec des exigences précises en matière de qualité de code, de tests et de gestion de versions.
 
-[IMPORTANT]
-====
-Dans ces exercices, vous respecterez les contraintes suivantes:
+## 📌 Contraintes Générales
 
-* Vous utiliserez `git` en effectuant des commits réguliers comportant des messages informatifs.
-* Le _build_ sera assuré par Maven et plus précisément Maven wrapper (déjà intégré dans le projet).
-Aucune manipulation en dehors de Maven ne devra être nécessaire.
-* Le _build_ devra intégrer `checkstyle` pour la vérification des règles de codages Google.
-Le projet devra donc les respecter.
-* Des tests unitaire JUnit 4 devront être disponibles pour la plupart des méthodes développées.
-* Chaque exercice devra se trouver dans un _package_ différent.
-* Les fonctionnalités du langage Java devront être utilisées au mieux (exceptions, librairie de collections, I/O, ...).
-====
+- Utilisation de **Git** avec des commits réguliers et des messages informatifs.  
+- **Maven** (via Maven Wrapper) assure le build du projet.  
+- Intégration de **Checkstyle** avec les règles de codage Google.  
+- Présence de **tests unitaires JUnit 4** pour la majorité des méthodes développées.  
+- Chaque exercice est organisé dans un **package distinct**.  
+- Utilisation optimale des fonctionnalités Java : exceptions, collections, I/O, etc.
 
-== Utilisation des collections
-L'objet de cet exercice est de simuler l'interrogation d'un DNS (_Domain Name Server_).
-Un DNS convertit une adresse IP (`192.168.0.1` par exemple) en un nom qualifié de machine (`machine.domaine.local` par exemple) et inversement.
-Un nom qualifié comporte le nom de la machine (avant le premier `'.'`) et un nom de domaine (après le premier `'.'`).
+---
 
-L'interface proposera une ligne de commande à partir de laquelle les commandes suivantes devront être interprétées:
+## 📂 Contenu des Projets
 
-* `nom.qualifié.machine` : l'adresse IP de la machine est affichée;
-* `adr.es.se.ip` : le nom qualifié de cette machine est affiché;
-* `ls [-a]` _domaine_ : la liste des machines du domaine _domaine_ sera affichée triée selon le nom des machines ou selon les adresses IP (si `-a` est présent).
+### 1. 🖧 Simulation de DNS
 
-[IMPORTANT]
-====
-* La base de données du serveur sera conservée dans un fichier texte (une ligne par machine au format "`un_nom_de_machine une.adresse.IP`") chargé au lancement du programme.
-* Le nom du fichier devra être stocké dans un fichier de propriétés (cf. http://docs.oracle.com/javase/tutorial/essential/environment/properties.html[Tutoriel sur les propriétés]).
-====
+**Objectif** : Simuler un serveur DNS permettant de résoudre des adresses IP vers des noms de machines et inversement.
 
-. Réaliser les classes `AdresseIP`, `NomMachine` et `DnsItem` qui représentent respectivement une adresse IP, un nom qualifié de machine et une entrée du DNS.
-. Réaliser la classe `Dns` qui proposera les opérations suivantes:
-** un constructeur qui chargera la base de données,
-** deux méthodes `getItem` qui retourneront une instance de `DnsItem` soit à partir d'une adresse IP, soit à partir d'un nom de machine,
-** une méthode `getItems` qui retournera une liste d'items à partir d'un nom de domaine.
-. Réaliser la classe `DnsTUI` qui se chargera des interactions avec l'utilisateur.
-Cette classe fournira une méthode `nextCommande` qui analysera le texte saisi par l'utilisateur et retournera un objet implémentant l'interface `Commande` (cf. question suivante) et une méthode `affiche` qui affichera un résultat.
-. Les commandes DNS seront implémentées à l'aide du modèle de conception http://en.wikipedia.org/wiki/Command_pattern[Commande].
-** créer l'interface `Commande` comportant une seule méthode `execute`,
-** créer une classe implémentant cette interface pour chaque action (rechercher une IP, rechercher un nom, rechercher les machines d'un domaine, quitter l'application).
-. Réaliser la classe principale `DnsApp`.
-La méthode `run` de cette classe interagira avec l'interface utilisateur pour récupérer la prochaine commande, l'exécutera puis affichera la résultat.
+**Fonctionnalités :**  
+- Résolution d'un **nom qualifié** en **adresse IP**.  
+- Résolution d'une **adresse IP** en **nom qualifié**.  
+- Commande `ls [-a] domaine` pour afficher les machines d’un domaine, triées par nom ou IP.  
+- **Base de données** stockée dans un fichier texte chargé au démarrage.  
 
-== Logiciel de "dessin"
-Le but de cet exercice est de réaliser un logiciel de dessin 2D.
-On se limitera ici à un affichage textuel, i.e. seule une description des figures sera affichée.
+**Principales classes :**  
+- `AdresseIP` : Représente une adresse IP.  
+- `NomMachine` : Représente un nom qualifié de machine.  
+- `DnsItem` : Associe une machine et son IP.  
+- `Dns` : Gestionnaire des opérations DNS (chargement des données, recherches).  
+- `DnsTUI` : Interface en ligne de commande.  
+- `Commande` : Interface pour implémenter les commandes (pattern *Command*).  
+- `DnsApp` : Classe principale du programme.
 
-Le logiciel devra offrir les fonctionnalités suivantes:
+**Exécution :**  
+```bash
+cd dns-simulation
+./mvnw clean compile exec:java -Dexec.mainClass="DnsApp"
+```
 
-* manipulation (affichage et déplacement) des formes comme des rectangles et des cercles,
-* regroupement d'objets afin de leur faire subir un traitement global
-(par exemple, déplacer ensemble un cercle et un rectangle),
-* sauvegarde/chargement d'un dessin à l'aide de la sérialisation.
+---
 
-. Proposer une hiérarchie de classe modélisant ce problème et un découpage en module du logiciel
-. Réaliser une implémentation du logiciel de dessin
+### 2. 🎨 Logiciel de Dessin 2D (Textuel)
 
-== Requêtes en utilisant les `streams`
-Le but de cette exercice est d'exprimer un ensemble de requêtes en utilisant la bibliothèque `stream`.
+**Objectif** : Créer un logiciel de dessin 2D avec un affichage textuel des formes.  
 
-Un employé possède les attributs suivants :
-nom (`String`), age (`int`), sexe (`enum`), salaire (`BigDecimal`),
-date d'embauche (`LocalDate`) et service de rattachement (`Service`).
-Un service comporte un nom (`String`) et une adresse (`String`).
+**Fonctionnalités :**  
+- Manipulation de **formes** (cercle, rectangle).  
+- **Déplacement** et **groupement** des objets.  
+- **Sauvegarde** et **chargement** des dessins via la sérialisation.  
 
-. Implémentez la classe `Employe` et l'énumération `Service`
-. Créez un jeu de données de test
-. Implémentez les requêtes suivantes (faites afficher le résultat)
-.. les employés (avec toutes leurs caractéristiques)
-.. les employés de moins de 30 ans
-.. le nom des hommes
-.. le nom et le salaire trié par salaire décroissant
-.. la moyenne des salaires
-.. les employés regroupés selon leur sexe
-.. la moyenne des salaires par sexe
-.. le nom et la date d'embauche par services
+**Principales classes :**  
+- `Forme` (interface) : Méthodes de base (afficher, déplacer).  
+- `Cercle` et `Rectangle` : Implémentations des formes.  
+- `GroupeForme` : Regroupement de formes.  
+- `DessinApp` : Classe principale du programme.  
+
+**Exécution :**  
+```bash
+cd dessin-2d
+./mvnw clean compile exec:java -Dexec.mainClass="DessinApp"
+```
+
+---
+
+### 3. 📊 Requêtes avec Streams
+
+**Objectif** : Manipuler des collections avec les **Streams** de Java.  
+
+**Modèles :**  
+- `Employe` : Nom, âge, sexe, salaire, date d'embauche, service.  
+- `Service` : Nom et adresse du service.  
+
+**Requêtes implémentées :**  
+- Liste complète des employés.  
+- Employés de moins de **30 ans**.  
+- Noms des **hommes**.  
+- Noms et salaires triés par **salaire décroissant**.  
+- **Moyenne des salaires**.  
+- Regroupement des employés par **sexe**.  
+- Moyenne des salaires par **sexe**.  
+- Noms et dates d'embauche par **service**.  
+
+**Exécution :**  
+```bash
+cd stream-queries
+./mvnw clean compile exec:java -Dexec.mainClass="StreamApp"
+```
+
+---
+
+## 🚀 Installation
+
+1. **Cloner le dépôt** :  
+   ```bash
+   git clone https://github.com/Mehdislik/java-projects-master-1.git
+   cd java-projects-master-1
+   ```
+
+2. **Compiler le projet avec Maven Wrapper** :  
+   ```bash
+   ./mvnw clean install
+   ```
+
+3. **Exécuter un projet spécifique** :  
+   *(Voir les instructions d'exécution dans chaque section de projet)*
+
+---
+
+## 🧪 Tests
+
+**Lancer les tests unitaires** :  
+```bash
+./mvnw test
+```
+
+- Les tests sont écrits avec **JUnit 4**.  
+- **Checkstyle** valide la conformité au guide de style Google.  
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues !  
+
+1. **Forkez** ce dépôt.  
+2. Créez une branche :  
+   ```bash
+   git checkout -b feature/ma-nouvelle-fonctionnalite
+   ```  
+3. **Commitez** vos modifications :  
+   ```bash
+   git commit -m "Ajout d'une nouvelle fonctionnalité"
+   ```  
+4. **Pushez** vers votre fork :  
+   ```bash
+   git push origin feature/ma-nouvelle-fonctionnalite
+   ```  
+5. Ouvrez une **Pull Request**.  
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](./LICENSE) pour plus d’informations.
